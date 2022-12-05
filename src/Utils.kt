@@ -8,6 +8,11 @@ import java.security.MessageDigest
 fun readInput(name: String) = File("src", "$name.txt")
     .readLines()
 
+fun <T>checkAndSolve(day: String, testOutput: T, solution: (List<String>) -> T) {
+    check(solution(readInput("${day}_test")) == testOutput)
+    println(solution(readInput(day)))
+}
+
 /**
  * Converts string to md5 hash.
  */
